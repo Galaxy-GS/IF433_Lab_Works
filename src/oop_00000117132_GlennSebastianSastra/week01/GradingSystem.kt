@@ -1,5 +1,7 @@
 package oop_00000117132_GlennSebastianSastra.week01
 
+import kotlin.system.exitProcess
+
 fun main() {
     val name = "John Thor"
     val score = 80
@@ -14,4 +16,8 @@ fun main() {
     }
 
     println("Grade kamu: $grade")
+
+    println("Status: ${calculateStatus(score)}")
 }
+
+fun calculateStatus(score: Int) = if (score > 75) "Lulus" else "Tidak lulus"
