@@ -5,21 +5,24 @@ import java.util.Scanner
 fun main() {
     val scanner = Scanner(System.`in`)
 
+    println("1. Daftar dengan jurusan")
+    println("2. Daftar tanpa jurusan")
+    print("Pilih opsi: ")
+    val choice = scanner.nextLine().toInt()
+
     print("Masukkan NIM: ")
     val nim = scanner.nextLine()
-
-    if (nim.length != 8) {
-        println("NIM tidak valid! Harus 8 digit.")
-        return
-    }
 
     print("Masukkan Nama: ")
     val name = scanner.nextLine()
 
-    print("Masukkan Jurusan: ")
-    val major = scanner.nextLine()
+    val student = if (choice == 1) {
+        print("Masukkan Jurusan: ")
+        val major = scanner.nextLine()
+        Student(nim, name, major)
+    } else {
+        Student(nim, name)
+    }
 
-    val student = Student(nim, name, major)
-
-    println("Data Mahasiswa berhasil dibuat!")
+    println("Mahasiswa berhasil dibuat!")
 }
