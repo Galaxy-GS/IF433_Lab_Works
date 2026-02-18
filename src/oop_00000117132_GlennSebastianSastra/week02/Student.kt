@@ -11,4 +11,6 @@ class Student(
             println("WARNING: NIM harus 8 digit!")
         }
     }
+
+    constructor(nim: String, name: String) : this(nim, name, "Non-Matriculated")
 }
