@@ -4,10 +4,10 @@ class Weapon(val name: String, damage: Int) {
     var damage: Int = damage
         set(value) {
             when {
-                value > 0 -> {
+                value < 0 -> {
                     println("Damage tidak boleh negatif!")
                 }
-                value < 1000 -> {
+                value > 1000 -> {
                     println("Damage terlalu overpower!")
                     field = 1000
                 }
