@@ -36,6 +36,7 @@ fun main() {
 
     val payments: List<PaymentMethod> = listOf(wallet, card)
 
+    //sudah smart casting
     for (payment in payments) {
         payment.processPayment(75000.0)
         if (payment is EWallet) {
