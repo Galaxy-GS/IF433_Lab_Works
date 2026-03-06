@@ -23,10 +23,27 @@ fun main() {
         println("--------------------------")
     }
 
-    println("=== Tugas Mandiri ===")
+    println("\n\n=== Math Helper ===")
     val math = MathHelper()
 
     println("Luas persegi: ${math.hitungLuas(8)} cm²")
     println("Luas persegi panjang: ${math.hitungLuas(6,7)} cm²")
     println("Luas lingkaran: ${math.hitungLuas(10.0)} cm²")
+
+    println("\n\n=== Sistem Pembayaran ===")
+    val wallet = EWallet("Budi", 50000.0)
+    val card = CreditCard("Chandra", 100000.0)
+
+    val payments: List<PaymentMethod> = listOf(wallet, card)
+
+    for (payment in payments) {
+        payment.processPayment(75000.0)
+        if (payment is EWallet) {
+            println("${wallet.accountName} sedang melakukan top up.")
+            payment.topUp(50000.0)
+            payment.processPayment(75000.0)
+        }
+    }
+    println("Hebat kamu bud!")
+
 }
