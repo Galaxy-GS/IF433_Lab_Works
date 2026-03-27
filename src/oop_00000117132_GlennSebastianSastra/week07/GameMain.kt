@@ -24,4 +24,15 @@ fun main() {
         println("Durability: ${weapon.durability}")
         println()
     }
+
+    println("=== EVENT SYSTEM ===")
+
+    val weapon = Weapon.forgeStaterWeapon()
+
+    val upgradedItem = weapon.item.copy(damage = 20)
+
+    processEvent(BattleState.SafeZone)
+    processEvent(BattleState.MonsterEncounter("Blue Buff"))
+    processEvent(BattleState.LootDropped(upgradedItem))
+    processEvent(BattleState.GameOver("Slain by Enemy"))
 }
