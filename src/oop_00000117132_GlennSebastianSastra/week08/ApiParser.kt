@@ -13,11 +13,11 @@ class ApiParser {
         val type = rawJson["type"] as? String
 
         return when (type) {
-            "Electronic" -> {
+            "ELECTRONIC" -> {
                 val warranty = rawJson["warranty"] as? Int ?: 12
                 Product.Electronic(id, name, warranty)
             }
-            "Clothing" -> {
+            "CLOTHING" -> {
                 val size = rawJson["size"] as? String ?: "All size"
                 Product.Clothing(id, name, size)
             }
@@ -28,8 +28,8 @@ class ApiParser {
 
     fun checkout(product: Product) {
         val id = when (product) {
-            is Product.Electronic -> product.id
             is Product.Clothing -> product.id
+            is Product.Electronic -> product.id
         }
         val trxId = JavaPaymentService.processPayment(id)!!
         println("Transaction ID: $trxId")
