@@ -22,6 +22,7 @@ class ApiParser {
                 Product.Clothing(id, name, size)
             }
             else -> null
+
         }
     }
 }
