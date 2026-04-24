@@ -35,4 +35,13 @@ fun main() {
     topPerformersString.forEach {
         println(it)
     }
+
+    println("\n=== LOSSES ===")
+
+    worstPerformersString.forEach {
+        println(it)
+    }
+
+    println("\nPairs traded:")
+    println(uniquePairs)
 }
