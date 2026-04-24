@@ -10,6 +10,6 @@ fun main() {
         TradeLog("XRPUSDT", "SHORT", 10, 0.0, "OPEN")
     )
 
-    val  closedTrades = tradeHistory.filter { it.status == "CLOSED" }
-
+    val closedTrades = tradeHistory.filter { it.status == "CLOSED" }
+    val winningTrades = closedTrades.filter { it.roe > 0 }
 }
