@@ -44,4 +44,4 @@ fun main() {
 
     println("\nPairs traded:")
     println(uniquePairs)
-}
+} //berjalan dengan lancar
