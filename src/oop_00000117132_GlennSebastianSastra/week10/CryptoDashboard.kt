@@ -16,4 +16,13 @@ fun main() {
     response.data.forEach {
         println("Coin: ${it.name} | Balance: ${it.balance}")
     }
+
+    val txRepo = WalletRepository<Transaction>()
+    txRepo.add(Transaction("TX001", 150000.0))
+    txRepo.add(Transaction("TX002", 275000.0))
+    println("\n=== TRANSACTIONS ===")
+
+    txRepo.getAll().forEach {
+        println("Transaction ${it.id} | Amount: ${it.amount}")
+    }
 }
