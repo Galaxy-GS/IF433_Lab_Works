@@ -25,4 +25,4 @@ fun main() {
     txRepo.getAll().forEach {
         println("Transaction ${it.id} | Amount: ${it.amount}")
     }
-}
+} //jalan sesuai yang diharapkan
