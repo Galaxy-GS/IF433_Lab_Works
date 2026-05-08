@@ -1,10 +1,17 @@
 package oop_00000117132_GlennSebastianSastra.week11
 
 fun main() {
-    print("=== TEST EXTENSION FUNCTIONS ===")
+    println("=== TEST EXTENSION FUNCTIONS ===")
     println("Alex".addGreeting())
     println("Hi".repeatTimes(3))
 
     val text: String? = null
     println("Apakah null/empty? ${text.isNullOrEmptyCustom()}")
+
+    println("\n=== TEST RUN FUNCTION ===")
+    val result = "Kotlin".run {
+        println("Memproses kata: ${this}")
+        length * 2
+    }
+    println("Hasil kalkulasi run: $result")
 }
