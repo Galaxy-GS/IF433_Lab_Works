@@ -9,4 +9,6 @@ fun main() {
         it.length
     }
     println("Panjang nama: $length")
+
+
 }
