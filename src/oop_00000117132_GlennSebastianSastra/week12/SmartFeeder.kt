@@ -30,5 +30,10 @@ fun main() {
         println("Siklus pengecekan dispenser pagi selesai.")
     }
 
-    runCatching { dispenseKibble(30, 1000, false) }
+    runCatching {
+        dispenseKibble(30, 1000, false)
+    }.onSuccess { newStock ->
+        currentKibbleStock = newStock
+        println("Makan sore sukses! Sisa stok kibble: $currentKibbleStock gr")
+    }
 }
