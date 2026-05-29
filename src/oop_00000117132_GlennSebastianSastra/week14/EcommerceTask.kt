@@ -43,14 +43,37 @@ class EmailNotifier : NotificationService {
 }
 
 class SafeOrderProcessor(private val repo: OrderRepository, private val notifier: NotificationService) {
-    fun processOrder(customerType: String, price: Double) {
-        val finalPrice = when (customerType) {
-            "VIP" -> price * 0.8
-            else -> price
-        }
+    fun processOrder(strategy: PricingStrategy, price: Double) {
+        val finalPrice = strategy.calculate(price)
 
-        repo.saveOrder("$customerType,$finalPrice")
+        repo.saveOrder("FINAL_PRICE,$finalPrice")
 
         notifier.sendNotification("Order berhasil diproses!")
     }
+}
+
+interface PricingStrategy{
+    fun calculate(price: Double): Double
+}
+
+class VipPricing : PricingStrategy{
+    override fun calculate(price: Double): Double {
+        return price * 0.8
+    }
+}
+
+class RegularPricing : PricingStrategy{
+    override fun calculate(price: Double): Double {
+        return price
+    }
+}
+
+fun main() {
+    val repo = CsvOrderRepository("orders.csv")
+    val notifier = EmailNotifier()
+    val processor = SafeOrderProcessor(repo, notifier)
+
+    processor.processOrder(VipPricing(), 1000.0)
+
+    processor.processOrder(RegularPricing(), 500.0)
 }
